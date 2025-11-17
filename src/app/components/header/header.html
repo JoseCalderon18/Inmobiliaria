@@ -1,0 +1,96 @@
+<header class="w-full bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0">
+        <img src="../src/assets/images/logo.webp" alt="LeyvaIllescas Logo" class="h-12 w-auto md:h-16" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a routerLink="/inmuebles" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" class="text-slate-900 hover:text-blue-600 font-medium text-sm transition-colors">
+          Inmuebles
+        </a>
+        <a routerLink="/postventa" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" class="text-slate-900 hover:text-blue-600 font-medium text-sm transition-colors">
+          Postventa
+        </a>
+        <a routerLink="/historia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" class="text-slate-900 hover:text-blue-600 font-medium text-sm transition-colors">
+          Nuestra Historia
+        </a>
+        <a routerLink="/contacto" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" class="text-slate-900 hover:text-blue-600 font-medium text-sm transition-colors">
+          Contacto
+        </a>
+      </nav>
+
+      <!-- Desktop Auth Buttons -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="/login" class="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
+          Login
+        </a>
+        <a href="/signup" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium text-sm transition-colors">
+          Sign Up
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button 
+        (click)="toggleMenu()"
+        class="md:hidden p-2 rounded-md text-slate-900 hover:bg-gray-100 transition-colors"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-label="Toggle navigation menu">
+        @if (isMenuOpen()) {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        } @else {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        }
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    @if (isMenuOpen()) {
+      <nav class="md:hidden border-t border-gray-200 py-4 space-y-2">
+        <a 
+          routerLink="/inmuebles" 
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          class="block px-3 py-2 rounded-md text-slate-900 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors">
+          Inmuebles
+        </a>
+        <a 
+          routerLink="/postventa" 
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          class="block px-3 py-2 rounded-md text-slate-900 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors">
+          Postventa
+        </a>
+        <a 
+          routerLink="/historia" 
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          class="block px-3 py-2 rounded-md text-slate-900 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors">
+          Nuestra Historia
+        </a>
+        <a 
+          routerLink="/contacto" 
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          class="block px-3 py-2 rounded-md text-slate-900 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors">
+          Contacto
+        </a>
+
+        <div class="border-t border-gray-200 pt-4 mt-4 space-y-2">
+          <a href="/login" class="block px-3 py-2 text-blue-600 hover:bg-blue-50 rounded-md font-medium transition-colors">
+            Login
+          </a>
+          <a href="/signup" class="block px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium text-center transition-colors">
+            Sign Up
+          </a>
+        </div>
+      </nav>
+    }
+  </div>
+</header>
